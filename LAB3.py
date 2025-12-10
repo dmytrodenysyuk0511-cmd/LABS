@@ -9,7 +9,7 @@ print("Результати:")
 for name, grade in students.items():
     print(name, grade)
 if students:
-    avg = sum(students.values()) / len(students)
+    avg = sum(students.values()) / len(students) #len повертє кількіст елементів у списку
     print("Середній бал: ", avg)
     excellent = [name for name, grade in students.items() if 10 <= grade <= 12]
     good = [name for name, grade in students.items() if 7 <= grade <= 9]
@@ -20,4 +20,5 @@ if students:
     print("Відстаючі: ", {len(weak)}, weak)
     print("Не здали: ", {len(failed)}, failed)
 else:
+
     print("Немає даних.")
