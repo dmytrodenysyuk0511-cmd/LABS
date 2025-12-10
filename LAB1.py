@@ -1,12 +1,12 @@
-age = 19
+age = 17
 weight = 60.2
 list_fruits = ['apple', 'orange','lemon']
-list_cars = ['amr','mercedes','audi']
+list_cars = ['amr','mercedes','bmw']
 tuple_digits = (1,2,3,4,5,6,7,8,9,0)
 it_is_python = True
 unique_numbers = {14,87,94,881}
-height = 174
-students_in_group = 34
+height = 190
+students_in_group = 21
 year = 2025
 print(age)
 print(weight)
@@ -27,4 +27,5 @@ print(type(it_is_python))
 print(type(unique_numbers))
 print(type(height))
 print(type(students_in_group))
+
 print(type(year))
