@@ -19,6 +19,7 @@ if students:
     print("Хорошисти: ", {len(good)}, good)
     print("Відстаючі: ", {len(weak)}, weak)
     print("Не здали: ", {len(failed)}, failed)
-else:
+else: #в інших випадках
 
     print("Немає даних.")
+
