@@ -28,6 +28,16 @@ print(type(it_is_python))
 print(type(unique_numbers))
 print(type(height))
 print(type(students_in_group))
-
 print(type(year))
 
+j=10
+k=6
+
+a=j+k # додає числа
+b=j-k # віднімає числа
+c=j*k # множить числа
+d=j/k # ділить числа
+e=j%k # показує остачу від ділення
+f=j**k # підносить перше число до степеня другого
+g=j//k # бере тільки цілу частину від ділення
+print(a, b, c, d, e, f, g)
