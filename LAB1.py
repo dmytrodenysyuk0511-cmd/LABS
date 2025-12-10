@@ -1,4 +1,5 @@
 age = 17
+name = "Dima"
 weight = 60.2
 list_fruits = ['apple', 'orange','lemon']
 list_cars = ['amr','mercedes','bmw']
@@ -29,3 +30,4 @@ print(type(height))
 print(type(students_in_group))
 
 print(type(year))
+
