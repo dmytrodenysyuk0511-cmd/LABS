@@ -1,9 +1,9 @@
-def format_price(price):
+def format_price(price): #це ключове слово, яке використовується для створення функції. Функція — це іменований блок коду, який виконує певні дії, коли його викликають
     """Форматує ціну з двома знаками після коми"""
-    return "Ціна: " + str(round(price, 2)) + " грн"
+    return "Ціна: " + str(round(price, 2)) + " грн" #round() – це функція, яка округляє число до найближчого цілого або до заданої кількості десяткових знаків
 
 
-def check_availability(*product_names):
+def check_availability(*product_names): #Check availability це загальний термін, що описує функцію або процес, який визначає, чи є певний ресурс, стан, елемент даних або функція системи доступними для використання
     """Перевіряє наявність товарів у магазині"""
     store = {
         "яблуко": True,
@@ -15,7 +15,7 @@ def check_availability(*product_names):
     availability = {}
     for product in product_names:
         availability[product] = store.get(product, False)
-    return availability
+    return availability  #return (повернення) — це інструкція, яка завершує виконання функції і передає керування назад до місця, звідки функцію було викликано, зазвичай передаючи певне значення (результат)
 
 
 def make_order(order_list):
@@ -66,4 +66,5 @@ def main():
 
 # Запуск тільки якщо файл є основним
 if name == "main":
+
     main()
