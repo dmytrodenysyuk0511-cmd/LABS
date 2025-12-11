@@ -1,70 +1,44 @@
-def format_price(price): #це ключове слово, яке використовується для створення функції. Функція — це іменований блок коду, який виконує певні дії, коли його викликають
-    """Форматує ціну з двома знаками після коми"""
-    return "Ціна: " + str(round(price, 2)) + " грн" #round() – це функція, яка округляє число до найближчого цілого або до заданої кількості десяткових знаків
+def format_price(price): #Функція1 - формат ціни
+    return f"{price:.2f} грн"
 
+def check_availability(store, *items): #Функція2 - чек наявності
+    return {item: (item in store and store[item][1]) for item in items}
 
-def check_availability(*product_names): #Check availability це загальний термін, що описує функцію або процес, який визначає, чи є певний ресурс, стан, елемент даних або функція системи доступними для використання
-    """Перевіряє наявність товарів у магазині"""
-    store = {
-        "яблуко": True,
-        "банан": False,
-        "молоко": True,
-        "хліб": True,
-        "сир": False
-    }
-    availability = {}
-    for product in product_names:
-        availability[product] = store.get(product, False)
-    return availability  #return (повернення) — це інструкція, яка завершує виконання функції і передає керування назад до місця, звідки функцію було викликано, зазвичай передаючи певне значення (результат)
+def order(store): #Функція3 - замовлення
+    order = input("Введіть товари через пробіл: ").split()
+    check = check_availability(store, *order)
 
+    unavailable = [item for item, available in check.items() if not available]
 
-def make_order(order_list):
-    """Оформляє замовлення і підраховує загальну вартість"""
-    price_list = {
-        "яблуко": 25.5,
-        "банан": 30,
-        "молоко": 45,
-        "хліб": 20,
-        "сир": 80
-    }
-
-    availability = check_availability(*order_list)
-    if not all(availability.values()):
-        print("Немає в наявності:")
-        for product, is_available in availability.items():
-            if not is_available:
-                print("-", product)
+    if unavailable:
+        print("Замовлення скасовано! Немає:", ", ".join(unavailable)) #join обєднує в рядок через ", "
         return
 
-    total_price = sum(price_list[product] for product in order_list)
-    print("Замовлення прийнято,", format_price(total_price))
+    total = 0
+    print("Замовлення:")
+    for item in order:
+        price = store[item][0]
+        print(f"{item}: {format_price(price)}")
+        total += price
+    print("Загалом:", format_price(total))
 
-
-# --- ТОЧКА ВХОДУ ---
 def main():
-    user_action = input("Введіть дію (1 - показати ціни, 2 - купити): ")
+    store = {"Стіл": [1499.99, True],
+            "Стілець": [500.50, False],
+            "Лампа": [400.50, False],
+            "Шафа": [3199.99, True],
+            "Диван": [5800.25, True]}
 
-    if user_action == "1":
-        price_list = {
-            "яблуко": 25.5,
-            "банан": 30,
-            "молоко": 45,
-            "хліб": 20,
-            "сир": 80
-        }
-        for product_name, price in price_list.items():
-            print(product_name, "-", format_price(price))
+    while True:
+        choice = input("Оберіть дію (1 - Купити, 2 - Переглянути ціни):")
+        if choice == "1":
+            order(store)
+        elif choice == "2":
+            for item, (price, available) in store.items():
+                status = "+" if available else "-"
+                print(f"{item}: {format_price(price)} ({status})")
+        else:
+            print("Непрописаний варіант!")
 
-    elif user_action == "2":
-        raw_input = input("Введіть товари через кому: ").lower().split(",")
-        order_list = [item.strip() for item in raw_input]
-        make_order(order_list)
-
-    else:
-        print("Невірна дія")
-
-
-# Запуск тільки якщо файл є основним
-if name == "main":
-
+if __name__ == '__main__':
     main()
